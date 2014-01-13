@@ -18,6 +18,11 @@ module HasOffersV3
         def update_payment_method_paypal(params = {})
           post_request 'updatePaymentMethodPaypal', params
         end
+
+        def get_payment_methods(params = {})
+          requires! params, [:id]
+          get_request 'getPaymentMethods', params
+        end
       end
     end
   end

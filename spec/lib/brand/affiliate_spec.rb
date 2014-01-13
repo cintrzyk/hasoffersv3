@@ -45,4 +45,19 @@ describe HasOffersV3::Brand::Affiliate do
       validate_call response
     end
   end
+
+  describe '#get_payment_methods', :no_stub do
+    it 'makes a proper request call' do
+      stub_call :get, nil, Regexp.new(url)
+      response = subject.get_payment_methods id: 1
+      a_request(:get, url).with(query: hash_including({'Method' => 'getPaymentMethods', 'id' => '1'})).should have_been_made
+      validate_call response
+    end
+
+    context 'there is no id' do
+      it 'raises exception' do
+        expect { subject.get_payment_methods failed_id: 1 }.to raise_error ArgumentError
+      end
+    end
+  end
 end
