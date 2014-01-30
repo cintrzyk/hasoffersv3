@@ -30,7 +30,6 @@ module HasOffersV3
         end
 
         def get_signup_questions(params = {})
-          requires! params, [:id]
           get_request 'getSignupQuestions', params
         end
       end
