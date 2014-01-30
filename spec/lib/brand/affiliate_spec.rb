@@ -75,4 +75,19 @@ describe HasOffersV3::Brand::Affiliate do
       end
     end
   end
+
+  describe '.get_signup_questions', :no_stub do
+    it 'makes a proper request call' do
+      stub_call :get, nil, Regexp.new(url)
+      response = subject.get_signup_questions id: 1
+      a_request(:get, url).with(query: hash_including({'Method' => 'getSignupQuestions', 'id' => '1'})).should have_been_made
+      validate_call response
+    end
+
+    context 'there is no id' do
+      it 'raises exception' do
+        expect { subject.get_signup_questions failed_id: 1 }.to raise_error ArgumentError
+      end
+    end
+  end
 end
