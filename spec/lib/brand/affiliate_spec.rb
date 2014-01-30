@@ -75,13 +75,4 @@ describe HasOffersV3::Brand::Affiliate do
       end
     end
   end
-
-  describe '.get_signup_questions', :no_stub do
-    it 'makes a proper request call' do
-      stub_call :get, nil, Regexp.new(url)
-      response = subject.get_signup_questions
-      a_request(:get, url).with(query: hash_including({'Method' => 'getSignupQuestions'})).should have_been_made
-      validate_call response
-    end
-  end
 end
