@@ -23,6 +23,11 @@ module HasOffersV3
           requires! params, [:id]
           get_request 'getPaymentMethods', params
         end
+
+        def get_signup_answers(params = {})
+          requires! params, [:id]
+          get_request 'getSignupAnswers', params
+        end
       end
     end
   end
